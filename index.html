@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Message</title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .dialog-box {
+            width: 400px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: #E564E5; /* Pink Header */
+            color: #F2E0F2;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header span {
+            cursor: pointer;
+        }
+        .input-field {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 8px;
+            border: none;
+            border-bottom: 1px solid black;
+        }
+        .send-btn {
+            width: 100%;
+            background: #E564E5; /* Pink Header */
+            background: ;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dialog-box">
+        <div class="header">
+            New Message
+            <span onclick="closeDialog()">✖</span>
+        </div>
+        <input type="email" id="from-email" class="input-field" placeholder="From:">
+        <input type="text" id="subject" class="input-field" placeholder="Subject:">
+        <textarea id="message" placeholder="Write your message here..."></textarea>
+        <button class="send-btn" onclick="sendEmail()">Send</button>
+    </div>
+
+    <script>
+        function sendEmail() {
+            let fromEmail = document.getElementById("from-email").value;
+            let subject = document.getElementById("subject").value;
+            let message = document.getElementById("message").value;
+
+            let mailtoLink = `mailto:your-email@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            window.location.href = mailtoLink;
+        }
+
+        function closeDialog() {
+            document.querySelector(".dialog-box").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
